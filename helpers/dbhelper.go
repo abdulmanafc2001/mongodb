@@ -75,3 +75,11 @@ func DeleteOneMovie(id string) error {
 	}
 	return nil
 }
+
+func DeleteAllMovie() error {
+	_, err := database.Collections.DeleteMany(context.Background(),bson.M{})
+	if err != nil {
+		return err
+	}
+	return nil
+}

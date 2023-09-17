@@ -92,3 +92,16 @@ func DeleteOneMovie(c *gin.Context) {
 		"message":"successfully deleted "+id+" movie", 
 	})
 }
+
+func DeleteAllMovies(c *gin.Context) {
+	err := helper.DeleteAllMovie()
+	if err != nil {
+		c.JSON(400,gin.H{
+			"error":err,
+		})
+		return
+	}
+	c.JSON(200,gin.H{
+		"message":"successfully deleted all data",
+	})
+}
