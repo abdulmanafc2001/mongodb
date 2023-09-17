@@ -78,3 +78,17 @@ func GetOneMovie(c *gin.Context) {
 		"movie": movie,
 	})
 }
+
+func DeleteOneMovie(c *gin.Context) {
+	id := c.Param("id")
+	err := helper.DeleteOneMovie(id)
+	if err != nil {
+		c.JSON(400,gin.H{
+			"error":err,
+		})
+		return
+	}
+	c.JSON(200,gin.H{
+		"message":"successfully deleted "+id+" movie", 
+	})
+}

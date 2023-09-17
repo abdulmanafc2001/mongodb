@@ -10,4 +10,5 @@ func UserRouter(router *gin.Engine) {
 	router.GET("/allmovies",controllers.ViewAllMovies)
 	router.PUT("/updatemovie/:id",controllers.UpdateMovie)
 	router.GET("/movie/:id",controllers.GetOneMovie)
+	router.DELETE("/movie/:id",controllers.DeleteOneMovie)
 }

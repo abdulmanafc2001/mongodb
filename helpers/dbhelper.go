@@ -62,3 +62,16 @@ func GetOneMovie(id string) (*models.Movie, error) {
 	}
 	return &movie,nil
 }
+
+func DeleteOneMovie(id string) error {
+	oid, err := primitive.ObjectIDFromHex(id)
+	if err != nil{
+		return err
+	}
+	filter := bson.M{"_id":oid}
+	_, err = database.Collections.DeleteOne(context.Background(),filter)
+	if err != nil {
+		return err
+	}
+	return nil
+}
