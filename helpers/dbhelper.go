@@ -48,3 +48,17 @@ func UpdateMovie(movie models.Movie, id string) (int, error) {
 	}
 	return int(res.MatchedCount), nil
 }
+
+func GetOneMovie(id string) (*models.Movie, error) {
+	oid ,err := primitive.ObjectIDFromHex(id)
+	if err != nil{
+		return nil,err
+	}
+	var movie models.Movie
+	filter := bson.M{"_id":oid}
+	err = database.Collections.FindOne(context.Background(),filter).Decode(&movie)
+	if err != nil{
+		return nil,err
+	}
+	return &movie,nil
+}

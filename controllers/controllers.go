@@ -64,3 +64,17 @@ func UpdateMovie(c *gin.Context) {
 	})
 
 }
+
+func GetOneMovie(c *gin.Context) {
+	id := c.Param("id")
+	movie, err := helper.GetOneMovie(id)
+	if err != nil {
+		c.JSON(400, gin.H{
+			"error": err,
+		})
+		return
+	}
+	c.JSON(200, gin.H{
+		"movie": movie,
+	})
+}
