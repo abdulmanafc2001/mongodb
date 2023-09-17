@@ -8,4 +8,5 @@ import (
 func UserRouter(router *gin.Engine) {
 	router.POST("/addmovie",controllers.AddMovie)
 	router.GET("/allmovies",controllers.ViewAllMovies)
+	router.PUT("/updatemovie/:id",controllers.UpdateMovie)
 }
