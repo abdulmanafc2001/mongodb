@@ -26,3 +26,17 @@ func AddMovie(c *gin.Context) {
 		"id":      res,
 	})
 }
+
+func ViewAllMovies(c *gin.Context) {
+	list,err := helper.ListAllMovies()
+
+	if err != nil {
+		c.JSON(400,gin.H{
+			"error":err,
+		})
+		return
+	}
+	c.JSON(200,gin.H{
+		"movies":list,
+	})
+}
